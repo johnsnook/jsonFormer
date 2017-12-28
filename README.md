@@ -1,6 +1,6 @@
 ## jsonFormer
 
-This jquer plugin or widget or whatever takes a json object and builds a form inside the element you specify.
+This jquery plugin or widget or whatever they're called now, takes a json object and builds a form inside the element you specify.
 You can then make changes to the data in the form and request 
 $('#form-container').jsonFormer({
     title: "Just point me at a div and pass me an object",
