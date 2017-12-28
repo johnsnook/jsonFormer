@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery jsonFormer widget example</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+        <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <style>
+            pre#jsonEditor{
+                height: 600px;
+            }
+            .content,#form-container{
+                background-color: #85bbff
+            }
+            #form-container .panel, #form-container .form-control{
+                border: #a3b4b6 solid thin;
+            }
+        </style>
+        <script type="text/javascript" src="jquery.jsonFormer.js"></script>
+        <div class="form-group">
+            <label for="comment">Paste in some Json:</label>
+            <textarea rows="20" id="jsonEditor" class="form-control input-lg" >{
+    "pendingRemovals_": {},
+    "dispatching_": {},
+    "listeners_": {},
+    "revision_": 0,
+    "ol_uid": 21,
+    "values_": {
+        "center": null,
+        "rotation": 0
+    },
+    "hints_": [0, 0],
+    "animations_": [],
+    "projection_": {
+        "code_": "EPSG:3857",
+        "units_": "m",
+        "extent_": [-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244],
+        "worldExtent_": [-180, -85, 180, 85],
+        "axisOrientation_": "enu",
+        "global_": true,
+        "canWrapX_": true,
+        "defaultTileGrid_": null
+    },
+    "maxResolution_": 156543.03392804097,
+    "minResolution_": 0.0005831682455839253,
+    "zoomFactor_": 2,
+    "minZoom_": 0,
+    "constraints_": {},
+    "options_": {}
+}</textarea>
+        </div>
+        <button id="go" type="button" class="btn btn-primary btn-block">try it</button>
+        <div id="form-container"></div>
+        <script>
+            $(document).ready(function () {
+                $('button#go').click(function () {
+                    $('#form-container').jsonFormer({
+                        title: "Just point me at a div and pass me an object",
+                        jsonObject: JSON.parse($('#jsonEditor').val())
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
